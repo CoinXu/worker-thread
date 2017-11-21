@@ -1,6 +1,6 @@
 # Todo
-[ ] abstract multi thread interface
-[ ] take thread's results
++ [ ] abstract multi thread interface
++ [ ] take thread's results
 
 # Usage
 First, manager worker module dependencies by webpack.
