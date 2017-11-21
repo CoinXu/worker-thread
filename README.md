@@ -1,7 +1,7 @@
 # worker-thread
 
 # Usage
-First, you need webpack help you manager worker dependencies.
+First, manager worker module dependencies by webpack.
 ```js
 // webpack.config.js
 {
