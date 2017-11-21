@@ -5,7 +5,7 @@
  */
 
 class Emitter {
-  
+
   constructor () {
     this.$listener = {}
   }
@@ -46,3 +46,5 @@ class Emitter {
     return this
   }
 }
+
+export default Emitter

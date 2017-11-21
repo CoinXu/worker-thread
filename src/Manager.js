@@ -4,6 +4,8 @@
  * @description
  */
 
+import Emitter from './Emitter'
+
 const creator = (function () {
   let counter = 0
   return function () {
@@ -12,11 +14,10 @@ const creator = (function () {
 })()
 
 class Manager extends Emitter {
-  constructor (uri, name) {
+  constructor (worker, name) {
     super()
-    this.$uri = uri
     this.$name = name || creator()
-    this.$worker = new Worker(this.$uri)
+    this.$worker = worker
     this.initialize()
   }
 
@@ -46,5 +47,7 @@ class Manager extends Emitter {
     return this
   }
 }
+
+export default Manager
 
 

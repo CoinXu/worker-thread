@@ -4,8 +4,10 @@
  * @description
  */
 
+import Manager from '../src/Manager'
+import Worker from './worker'
 
-const manager = new Manager('./worker.js')
+const manager = new Manager(new Worker())
 
 manager.on('message', function (message) {
   console.log('message %s', message)

@@ -4,6 +4,8 @@
  * @description
  */
 
+import Emitter from './Emitter'
+
 class Injector extends Emitter {
   constructor (scope) {
     super()
@@ -34,4 +36,6 @@ class Injector extends Emitter {
     return this
   }
 }
+
+export default Injector
 

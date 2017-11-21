@@ -4,8 +4,7 @@
  * @description
  */
 
-self.importScripts('./src/Emitter.js')
-self.importScripts('./src/Injector.js')
+import Injector from '../src/Injector'
 
 const injector = new Injector(self)
 
