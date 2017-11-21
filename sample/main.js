@@ -5,9 +5,9 @@
  */
 
 import Manager from '../src/Manager'
-import Worker from './worker'
+import SampleWorker from './worker'
 
-const manager = new Manager(new Worker())
+const manager = new Manager(new SampleWorker())
 
 manager.on('message', function (message) {
   console.log('message %s', message)
@@ -25,7 +25,7 @@ const send = document.querySelector('#message')
 let counter = 0
 
 send.onclick = function () {
-  manager.send('message', `manager: ${counter++}`)
+  manager.post('message', `manager: ${counter++}`)
 }
 
 

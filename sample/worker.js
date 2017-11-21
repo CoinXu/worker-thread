@@ -13,7 +13,7 @@ injector.on('message', function (message) {
   console.log('received: %s', message)
 
   setTimeout(function () {
-    injector.send('message', `worker response: ${counter++}`)
+    injector.post('message', `worker response: ${counter++}`)
   }, 2000)
 })
 
@@ -22,5 +22,5 @@ injector.on('error', function (error) {
 })
 
 setTimeout(function () {
-  injector.send('start', 'worker started!')
+  injector.post('start', 'worker started!')
 }, 2000)

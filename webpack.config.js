@@ -29,6 +29,7 @@ module.exports = {
       }
     ]
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       // name: 'vender', // Move dependencies to our vender file
