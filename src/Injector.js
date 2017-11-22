@@ -5,18 +5,21 @@
  */
 
 import Emitter from './Emitter'
+import EVENTS from './events'
+
+const $$scope = self
 
 class Injector extends Emitter {
   constructor (scope) {
     super()
-    this.$scope = scope
+    this.$scope = scope || $$scope
     this.initialize()
   }
 
   initialize () {
     this.$scope.addEventListener('message', event => {
-      const { type, data } = event.data
-      this.emit(type, data)
+      const data = event.data
+      this.emit(data.type, data.data)
     })
 
     this.$scope.addEventListener('error', error => {
@@ -31,11 +34,13 @@ class Injector extends Emitter {
     return this
   }
 
-  send (type, data) {
+  post (type, data) {
     this.$scope.postMessage({ type, data })
     return this
   }
 }
 
-export default Injector
+// 运行时发送 READY 事件
+$$scope.postMessage({ type: EVENTS.READY })
 
+export default Injector
