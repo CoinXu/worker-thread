@@ -5,6 +5,23 @@
  */
 
 import Injector from '../src/Injector'
+import Thread from '../src/Thread'
+
+class Runner extends Thread {
+  constructor (x, y) {
+    super()
+    this.x = x
+    this.y = y
+  }
+
+  run () {
+    setTimeout(() => this.take())
+  }
+
+  add(x, y) {
+    return x + y
+  }
+}
 
 const injector = new Injector(self)
 
