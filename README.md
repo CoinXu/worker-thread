@@ -21,7 +21,7 @@ First, manager worker module dependencies by webpack.
 Second, create a worker JavaScript module.
 ```js
 // worker.js
-import Injector from '../src/Injector'
+import Injector from '../lib/Injector'
 const injector = new Injector(self)
 injector.on('message', function (message) {
   console.log('received: %s', message)
@@ -34,7 +34,7 @@ injector.on('error', function (error) {
 
 Final, use worker in main thread.
 ```js
-import Manager from '../src/Manager'
+import Manager from '../lib/Manager'
 import SampleWorker from './worker'
 
 const manager = new Manager(new SampleWorker())
