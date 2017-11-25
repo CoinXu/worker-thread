@@ -3,7 +3,7 @@
 + [ ] take thread's results
 
 # Usage
-First, manager worker module dependencies by webpack.
+First, manage worker's dependencies by webpack.
 ```js
 // webpack.config.js
 {
@@ -32,7 +32,7 @@ injector.on('error', function (error) {
 })
 ```
 
-Final, use worker in main thread.
+Final, use the worker in main thread.
 ```js
 import Manager from '../lib/Manager'
 import SampleWorker from './worker'
@@ -47,6 +47,6 @@ manager.on('error', function (message) {
   console.log('received error: %s', message)
 })
 
-manager.send('message', 'sample message')
+manager.post('message', 'sample message')
 ```
 
