@@ -40,15 +40,13 @@ class Manager extends Emitter {
     })
 
     this.$worker.addEventListener('error', error => {
-      const { message, filename, lineno } = error
-      this.emit('error', { message, filename, lineno })
+      this.emit('error', {
+        message: error.message,
+        filename: error.filename,
+        lineno: error.lineno
+      })
     })
 
-    this.listenState()
-    return this
-  }
-
-  listenState () {
     this.on(Events.READY, () => this.$state = State.RUNNABLE)
     this.on(Events.START, () => this.$state = State.RUNNING)
     this.on(Events.FINISH, () => this.$state = State.RUNNABLE)
