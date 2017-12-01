@@ -4,7 +4,7 @@
  * @desc worker中实现Thread
  */
 
-import State from './state'
+import STATE from './state'
 import Emitter from './Emitter'
 
 /**
@@ -15,10 +15,10 @@ export default class Thread extends Emitter {
 
   constructor () {
     super()
-    this.$state = State.NEW
     this.$result = null
     this.$name = null
     this.$time = Date.now()
+    this.$state = STATE.READY
   }
 
   getState () {
@@ -37,8 +37,14 @@ export default class Thread extends Emitter {
     return this.$result
   }
 
+  put (result) {
+    this.$result = result
+    this.$state = STATE.COMPLETE
+    return this
+  }
+
   start () {
-    this.$state = State.RUNNING
+    this.$state = STATE.RUNNING
     this.run()
     return this
   }
@@ -46,10 +52,12 @@ export default class Thread extends Emitter {
   /**
    * @abstract
    */
-  run () {}
+  run () {
+    this.put(null)
+  }
 
   exit () {
-    this.state = State.TERMINATED
+    this.state = STATE.TERMINATED
   }
 
   toString () {

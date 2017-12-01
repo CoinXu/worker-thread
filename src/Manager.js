@@ -8,12 +8,18 @@ import Emitter from './Emitter'
 import State from './state'
 import Events from './events'
 
-const generate = (function () {
-  let counter = 0
-  return function () {
-    return `worker-${counter++}`
+let counter = 0
+
+function generate () {
+  return `worker-${counter++}`
+}
+
+function reduce () {
+  counter--
+  if (counter < 0) {
+    counter = 0
   }
-})()
+}
 
 class Manager extends Emitter {
   constructor (worker, name) {
@@ -56,6 +62,7 @@ class Manager extends Emitter {
 
   terminate () {
     this.emit(Events.TERMINATED)
+    reduce()
     this.$worker.terminate()
   }
 

@@ -5,7 +5,8 @@
  */
 
 import Emitter from './Emitter'
-import EVENTS from './events'
+import Events from './events'
+import State from './state'
 
 const $$scope = self
 
@@ -13,6 +14,7 @@ class Injector extends Emitter {
   constructor (scope) {
     super()
     this.$scope = scope || $$scope
+    this.$state =
     this.initialize()
   }
 
@@ -40,7 +42,7 @@ class Injector extends Emitter {
   }
 }
 
-// 运行时发送 READY 事件
-$$scope.postMessage({ type: EVENTS.READY })
+// 运行时发送 NEW 事件
+$$scope.postMessage({ type: Events.NEW })
 
 export default Injector

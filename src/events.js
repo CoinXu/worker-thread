@@ -9,8 +9,18 @@ function generate (type) {
 }
 
 export default {
+  // 生命周期事件
+  NEW: generate('NEW'),
   READY: generate(`READY`),
   START: generate(`START`),
   FINISH: generate(`FINISH`),
-  TERMINATED: generate('TERMINATED')
+  ERROR: generate('ERROR'),
+  TERMINATED: generate('TERMINATED'),
+
+  // 通信事件
+  MESSAGE: generate('MESSAGE'),
+  // 终止
+  SIGINT: generate('SIGINT'),
+  // 挂起
+  SIGTSTP: generate('SIGTSTP')
 }
